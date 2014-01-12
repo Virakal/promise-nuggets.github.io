@@ -9,7 +9,7 @@ splitting. </p>
 <p>The callback bails-out if there was an error reading the file,
 otherwise proceeds to split the content and call the original callback with 
 the line content:</p>
-<pre><code class="lang-js">funcstion readLine(file, line, callback) {
+<pre><code class="lang-js">function readLine(file, line, callback) {
     fs.readFile(file, function process(err, content) {
         if (err) return callback(err);
         callback(null, content.toString().split(&#39;\n&#39;)[line]);
@@ -22,7 +22,7 @@ readLine(&#39;myfile.txt&#39;, 2, function(err, line) {
 <p>To create a promise-based function we can use another promise method called 
 <code>.then()</code>. It works exactly the same as <code>.done()</code>, but also returns a promise 
 for the value returned inside its callbacks. </p>
-<p>We can simply return the line from inside the first .then callback. We get a 
+<p>We can simply return the line from inside the first <code>.then</code> callback. We get a 
 promise for that line outside of the callback (which we return from the 
 function)</p>
 <pre><code class="lang-js">function readLine(file, line) {
@@ -35,7 +35,7 @@ readLine(file, line).done(function(line) {
 }, function(err) {
     // handle error
 });</code></pre>
-<p>When you call a promise&#39;s .then function, a new promise is created and returned 
+<p>When you call a promise&#39;s <code>.then</code> function, a new promise is created and returned 
 by <code>.then</code>. Its a promise to apply all the operations inside the then callback 
 after the original async operation completes, and return the result.</p>
 <h2 id="notes">Notes</h2>
